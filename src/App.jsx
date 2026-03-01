@@ -4,6 +4,7 @@ import ProtectedRoute from './routes/ProtectedRoutes.jsx'
 import UserLayout from './layouts/UserLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 import Login from './pages/auth/Login.jsx'
+import Menu from './pages/user/Menu.jsx'
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
              element={
                <ProtectedRoute allowedRoles={["student"]} >
                    <UserLayout>
-                     <h1>Student home</h1>
+                      <Menu/>
                    </UserLayout>
                </ProtectedRoute>
              }

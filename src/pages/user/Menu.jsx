@@ -24,6 +24,21 @@ function Menu() {
     fetchMenu();
   }, []);
 
+  const handleAddToCart = async (menuId) => {
+    try {
+
+        await API.post("/cart/add" , {
+            menuId,
+            quantity:1,
+        })
+
+        alert("Added to cart");
+        
+    } catch (error) {
+        alert("Failed to Add")
+    }
+  }
+
   if (loading) return <p className="p-4">Loading menu...</p>;
   if (error) return <p className="p-4 text-red-500">{error}</p>;
 
@@ -35,10 +50,12 @@ function Menu() {
 
           <p className="mt-3 bg-blue-600">${item.price}</p>
 
-          <button className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          <button
+           onClick={() => handleAddToCart(item._id)}
+           className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Add to Cart
           </button>
-          
+
         </div>
       ))}
     </div>
