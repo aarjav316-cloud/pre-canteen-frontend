@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import ProtectedRoute from './routes/ProtectedRoutes.jsx'
 import UserLayout from './layouts/UserLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
+import Login from './pages/auth/Login.jsx'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
 
     <Routes>
  
-      <Route path='/login' element={<h1>Login Page</h1>} />
+      <Route path='/login' element={<Login/>} />
 
       <Route path='/'
              element={
