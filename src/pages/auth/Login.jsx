@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Login() {
   const { login } = useContext(login);
@@ -9,6 +10,20 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+
+    const storedUser = JSON.parse(localStorage.getItem("user"))
+
+     if(storedUser){
+        if(storedUser.role=== 'admin' || storedUser.role==='staff'){
+            navigate('/admin')
+        }else{
+            navigate('/')
+        }
+     }
+
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
